@@ -2,19 +2,21 @@
 #make sure to edit the value of each key to replace < path to this directory >
 #with the correct path to this directory on your computer
 
-# my_songs = {
-# "Go Go GO" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/01.mp3',
-# "LiberTeens" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/02.mp3',
-# "Hamburg" =>  '< path to this directory >/jukebox-cli/audio/Emerald-Park/03.mp3',
-# "Guiding Light" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/04.mp3',
-# "Wolf" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/05.mp3',
+ my_songs = {
+ "Go Go GO" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/01.mp3',
+ "LiberTeens" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/02.mp3',
+ "Hamburg" =>  '< path to this directory >/jukebox-cli/audio/Emerald-Park/03.mp3',
+ "Guiding Light" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/04.mp3',
+ "Wolf" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/05.mp3',
 # "Blue" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/06.mp3',
 # "Graduation Failed" => '< path to this directory >/jukebox-cli/audio/Emerald-Park/07.mp3'
 # }
 
 def help
-  #this method should be the same as in jukebox.rb
-
+  puts "Type help to get a list of commands"
+  puts "Type play and then the song name to play that specific Song"
+  puts "Type list to get a list of songs that can be played"
+  puts "Type exit to exit the program"
 end
 
 
@@ -37,9 +39,22 @@ def play(my_songs)
 end
 
 def exit_jukebox
-  #this method is the same as in jukebox.rb
+  puts "Goodbye"
 end
 
 def run(my_songs)
-  #this method is the same as in jukebox.rb
+  puts "Please enter a command:"
+  user_input = gets.chomp
+  
+  if user_input.include?("play")
+    play(songs)
+  elsif user_input.include?("list")
+    list(songs)
+  elsif user_input.include?("help")
+    help
+  elsif user_input.include?("exit")
+    exit_jukebox
+  else run(songs)
+  end
+  
 end
